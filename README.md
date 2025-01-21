@@ -51,4 +51,4 @@ Translate to English, keeping it concise: This is the folder containing two type
 ### Meta-Llama-3-8B-Instruct-bf16
 
 If you haven't downloaded the LLaMa-3 model, please download the LLaMa-3-8B model huggingface at this link:
-[LLaMa-3-8B-bf16](https://huggingface.co/gradientai/Meta-Llama-3-8B-bf16)
+[LLaMa-3-8B](https://huggingface.co/gradientai/Meta-Llama-3-8B-bf16)
