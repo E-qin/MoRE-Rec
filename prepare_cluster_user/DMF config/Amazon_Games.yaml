@@ -1,0 +1,48 @@
+data_path: /data1/CoAuthor2/Dataset/ # replace with your own data path. see more in Recbole.
+dataset: Amazon_Games
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+RATING_FIELD: rating
+TIME_FIELD: timestamp
+
+gpu_id: '5'
+
+
+load_col: 
+    inter: ['user_id', 'item_id', 'rating', 'timestamp']
+    item: ['item_id', 'title']
+
+user_inter_num_interval: "[5, inf)"
+item_inter_num_interval: "[5, inf)"
+val_interval:
+    rating: "[0, 5]"
+    timestamp: "[97830000, inf)"
+
+# threshold: 
+#     rating: 4
+
+# Training and evaluation config
+epochs: 500
+train_batch_size: 4096
+eval_batch_size: 4096000
+train_neg_sample_args:
+    distribution: uniform
+    sample_num: 1
+    alpha: 1.0
+    dynamic: False
+    candidate_num: 0
+
+# DMF config
+inter_matrix_type : 'rating'
+item_layers_dim : '[64, 64]'
+user_layers_dim : '[128, 64]'
+
+eval_args:
+    split: {'LS': 'valid_and_test'}
+    group_by: user
+    order: TO
+    mode: full
+
+metrics: ["GAUC", 'Hit', 'NDCG']
+
+valid_metric: 'GAUC'
